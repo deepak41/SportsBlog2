@@ -1,0 +1,30 @@
+<div ng-controller="loginCtrl">
+	<div>
+		<h1>This is the login page</h1>
+	</div>
+	
+	<div ng-show="message" class="alert alert-info fade in">
+	    <a href="" class="close" ng-click="message= false" aria-label="close">&times;</a>
+	    Either email or password is invalid!
+	</div>
+	
+	<div class="col-md-6 col-md-offset-2">
+		
+		<form ng-submit="validateUser(loginData)">
+			<div class="form-group">
+				<label for="email">Email Address</label>
+				<input type="email" class="form-control" id="email" ng-model="loginData.email"/>
+			</div>
+			
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" class="form-control" id="password" ng-model="loginData.password"/>
+			</div>
+			
+			<div class="form-group">
+				<input type="submit" class="btn btn-default" value="submit" />
+			</div>
+		</form>
+		
+	</div>
+</div>

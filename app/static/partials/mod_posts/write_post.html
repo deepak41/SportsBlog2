@@ -1,0 +1,24 @@
+<h1> This is the write_post.html </h1>
+
+<p> {{message}} </p>
+
+<div class="col-md-6 col-md-offset-2">
+		
+		<form ng-submit="createPost(formData)">
+			
+			<div class="form-group">
+				<label for="subject">SUBJECT</label>
+				<input type="text" class="form-control" id="subject" ng-model="formData.subject"/>
+			</div>
+			
+			<div class="form-group">
+				<label for="content">CONTENT</label>
+				<textarea class="form-control" rows="10" id="content" ng-model="formData.post_content"></textarea>
+			</div>
+			
+			<div class="form-group">
+				<input type="submit" class="btn btn-default" value="submit" />
+			</div>
+		</form>
+		
+	</div>
