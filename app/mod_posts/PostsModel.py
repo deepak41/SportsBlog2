@@ -40,13 +40,14 @@ class PostsModel(object):
     
     def getPostById(self, postId):
         
-        stmt_select = "select * from posts where pid = %s;"
+        stmt_select = "SELECT posts.`*`, users.firstname, users.lastname FROM users inner join posts on users.uid = posts.uid where pid = %s;"
         values = [postId]
         
         self.cursor.execute(stmt_select, values)
         
         row = self.cursor.fetchone()
         
+        print row
         return row
     
     

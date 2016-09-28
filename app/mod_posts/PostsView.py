@@ -24,6 +24,7 @@ class PostsView(MethodView):
             "post_content":row[3],
             "region":row[4],
             "date":t.strftime("%d-%b-%Y %H:%M"),
+            "author": row[6]+" "+row[7]
         }
         
         output.append(data)

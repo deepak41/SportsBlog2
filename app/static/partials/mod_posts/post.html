@@ -1,11 +1,18 @@
 <div>
 	<div class="row">
 		<div class="col-md-8">
-			<h1> {{post.subject}} </h1>
-
-			<p>
-				{{post.post_content}}
+			<h1 style="font-size:40px;margin-top: 0px;"> {{post.subject}} </h1>
+			
+			<p style="font-size:14px">
+				<img src="static/img/icons/user.png" alt="HTML5 Icon" style="width:16px;height:16px;margin-right:5px">{{post.author}} 
+				&boxv; 
+				<img src="static/img/icons/time.png" alt="HTML5 Icon" style="width:16px;height:16px;margin-right:5px">{{post.date}} 
+				&boxv; 
+				<img src="static/img/icons/comment.png" alt="HTML5 Icon" style="width:16px;height:16px;margin-right:5px">
+				0 comments
 			</p>
+
+			<p style="font-size:17px">{{post.post_content}}</p>
 		
 		</div>
 		
