@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask
 
 from app.mod_auth.auth_view import AuthView
 from app.mod_index.IndexView import IndexView
@@ -21,10 +21,10 @@ createPostView = CreatePostView.as_view("CreatePostView")
 
 
 app.add_url_rule('/', view_func=indexApi, methods=['GET'])
-app.add_url_rule('/logging', view_func=loginView, methods=['POST'])
-app.add_url_rule('/signupp', view_func=signupView, methods=['POST'])
+app.add_url_rule('/api/login', view_func=loginView, methods=['POST'])
+app.add_url_rule('/api/signup', view_func=signupView, methods=['POST'])
 app.add_url_rule('/api/userhome', view_func=userHomeView, methods=['GET'])
-app.add_url_rule('/post/<postId>', view_func=postsView, methods=['GET'])
+app.add_url_rule('/api/post/<postId>', view_func=postsView, methods=['GET'])
 app.add_url_rule('/api/createpost', view_func=createPostView, methods=['POST'])
 
 

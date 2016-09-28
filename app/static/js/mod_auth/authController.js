@@ -1,17 +1,9 @@
-app.service("postService", function($http) {
-	
-	this.postData = function(url, data) {
-		return $http.post(url, data);
-	}
-});
-
-
-app.controller("loginCtrl", function($scope, $location, postService) {
+app.controller("loginCtrl", function($scope, $location, ajaxCallService) {
 	
 	$scope.message= false;
 	
 	$scope.validateUser = function(loginData) {
-		postService.postData("/logging", loginData)
+		ajaxCallService.postData("/api/login", loginData)
 			.success(function(response) {
 				console.log(response);
 				
@@ -30,10 +22,10 @@ app.controller("loginCtrl", function($scope, $location, postService) {
 });
 
 
-app.controller("signupCtrl", function($scope, $location, postService) {
+app.controller("signupCtrl", function($scope, $location, ajaxCallService) {
 	$scope.createUser = function(signupData) {
 		
-		postService.postData("/signupp", signupData)
+		ajaxCallService.postData("/api/signup", signupData)
 			.success(function (response) {
 				console.log(response);
 				
@@ -48,6 +40,5 @@ app.controller("signupCtrl", function($scope, $location, postService) {
 		    	
 		    });
 	}
-	
 });
 

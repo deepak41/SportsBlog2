@@ -2,8 +2,16 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 app.config(function($routeProvider) {
 	$routeProvider
+		.when("/about", {
+			templateUrl : "/static/partials/about.html",
+			controller : ""
+		})
+		.when("/contact", {
+			templateUrl : "/static/partials/contact.html",
+			controller : ""
+		})
 		.when("/login", {
-			templateUrl : "/static/partials/login.html",
+			templateUrl : "/static/partials/mod_auth/login.html",
 			controller : "loginCtrl"
 		})
 		.when("/home", {
@@ -11,7 +19,7 @@ app.config(function($routeProvider) {
 			controller : "userhomeCtrl"
 		})
 		.when("/signup", {
-			templateUrl : "/static/partials/mod_auth/signup.html",
+			templateUrl : "/static/partials/mod_users/signup.html",
 			controller : "signupCtrl"
 		})
 		.when("/post/:postid", {
@@ -27,8 +35,20 @@ app.config(function($routeProvider) {
 			controller : "editPostCtrl"
 		})
 		.otherwise({
-		redirectTo : "/login"
-		
+		redirectTo : "/home"
 	});
-		
 });
+
+
+/* Global Services */
+app.service("ajaxCallService", function($http) {
+	
+	this.getData = function(url) {
+		return $http.get(url);
+	}
+	
+	this.postData = function(url, data) {
+		return $http.post(url, data);
+	}
+});
+

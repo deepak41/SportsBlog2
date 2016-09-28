@@ -14,9 +14,12 @@ class PostsModel(object):
     
     def getLatestPosts(self, skipRows, noOfRows):
         stmt_select = "SELECT * FROM posts ORDER BY pid DESC LIMIT %s, %s;"
+        
+        stmt_select2 = "SELECT posts.`*`, users.firstname, users.lastname FROM users inner join posts on users.uid = posts.uid ORDER BY pid DESC LIMIT %s, %s;"
+        
         values = [skipRows, noOfRows]
         
-        self.cursor.execute(stmt_select, values)
+        self.cursor.execute(stmt_select2, values)
         
         records = self.cursor.fetchall()
         
@@ -25,7 +28,7 @@ class PostsModel(object):
     
     def getLatestPostsByRegion(self, skipRows, noOfRows, region):
         
-        stmt_select = "SELECT * FROM posts where region = %s ORDER BY pid DESC LIMIT %s, %s;"
+        stmt_select = "SELECT posts.`*`, users.firstname, users.lastname FROM users inner join posts on users.uid = posts.uid where region = %s ORDER BY pid DESC LIMIT %s, %s;"
         values = [region, skipRows, noOfRows]
         
         self.cursor.execute(stmt_select, values)

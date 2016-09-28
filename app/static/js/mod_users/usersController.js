@@ -1,17 +1,10 @@
-app.service("getService", function($http) {
+app.controller("userhomeCtrl", function($scope, ajaxCallService) {
 	
-	this.getData = function(url) {
-		return $http.get(url);
-	}
-});
-
-
-app.controller("userhomeCtrl", function($scope, getService) {
-	
-	getService.getData("/api/userhome")
+	ajaxCallService.getData("/api/userhome")
 		.success(function(response){
 			$scope.latestPosts = response["section1"];
 			$scope.sectionalPosts = response["section2"];
+			
+			console.log($scope.sectionalPosts);
 		})
-	
-})
+});

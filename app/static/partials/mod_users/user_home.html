@@ -1,5 +1,3 @@
-<h1>This is user home page</h1>
-
 <div>
 		<!-- ROW 1 -->
         <div class="row">
@@ -13,82 +11,144 @@
         	
         	<!-- Latest News -->
         	<div class="col-md-4">
-        		<p>Latest News</p>
+        		<h2 class="latestNewsTitle"><a href="#">Latest News&raquo;</a></h2>
 	        	<div class="list-group"> 
 	        		
 	        		<a href="#/post/{{post.pid}}" class="list-group-item" ng-repeat="post in latestPosts"> 
 	        			<h4 class="list-group-item-heading"> {{ post.subject }} </h4> 
-	        			<p class="list-group-item-text"> {{ post.post_content }}
+	        			<p class="list-group-item-text"> {{ post.post_content }} </p>
 	        			
-	        			</p> 
+	        			<div class="row authorbar">
+	        				<div class="col-md-6">
+	        				
+	        					<img src="static/img/icons/user.png" alt="HTML5 Icon" style="width:15px;height:15px;">
+	        					{{ post.author }}
+	        				</div>
+	        				<div class="col-md-6">
+	        					<img src="static/img/icons/time.png" alt="HTML5 Icon" style="width:15px;height:15px;">
+	        					{{ post.date }}
+	        				</div>
+	        			</div>
 	        		</a>
 	        		
 	        	</div>
 	        </div>
-            
         </div>
         
         <!-- ROW 2 -->
-        <div class="row" style="margin-bottom:40px">
+        <div class="row rowblock2" style="margin-bottom:40px">
         
-        	<div class="col-md-6" ng-repeat="post in sectionalPosts">
-	        	<h3> {{ post.subject }} </h3>
-	        	<p> {{ post.post_content }} </p>
+        	<div class="row">
+        		<div class="col-md-6">
+        			<h2><a href="#">{{ sectionalPosts[0].region }}&raquo;</a></h2>
+		        	<h3> {{ sectionalPosts[0].subject }} </h3>
+		        	<p> {{ sectionalPosts[0].post_content }} </p>
+		        	
+		        	<div class="row">
+        				<div class="col-md-6"> 
+        					<img src="static/img/icons/user.png" alt="HTML5 Icon" style="width:20px;height:20px;">
+        					{{ sectionalPosts[0].author }} 
+        				</div>
+        				<div class="col-md-6"> 
+        					<img src="static/img/icons/time.png" alt="HTML5 Icon" style="width:20px;height:20px;">
+        					{{ sectionalPosts[0].date }} 
+        				</div>
+        			</div>
+		        </div>
+	        	
+	        	<div class="col-md-6">
+	        		<h2><a href="#">{{ sectionalPosts[1].region }}&raquo;</a></h2>
+		        	<h3> {{ sectionalPosts[1].subject }} </h3>
+		        	<p> {{ sectionalPosts[1].post_content }} </p>
+		        	
+		        	<div class="row">
+        				<div class="col-md-6"> 
+        					<img src="static/img/icons/user.png" alt="HTML5 Icon" style="width:20px;height:20px;">
+        					{{ sectionalPosts[1].author }} 
+        				</div>
+        				<div class="col-md-6"> 
+        					<img src="static/img/icons/time.png" alt="HTML5 Icon" style="width:20px;height:20px;">
+        					{{ sectionalPosts[1].date }} 
+        				</div>
+        			</div>
+		        </div>
         	</div>
         	
+        	<div class="row">
+        		<div class="col-md-6">
+        			<h2><a href="#">{{ sectionalPosts[2].region }}&raquo;</a></h2>
+		        	<h3> {{ sectionalPosts[2].subject }} </h3>
+		        	<p> {{ sectionalPosts[2].post_content }} </p>
+		        	
+		        	<div class="row">
+        				<div class="col-md-6"> 
+        					<img src="static/img/icons/user.png" alt="HTML5 Icon" style="width:20px;height:20px;">
+        					{{ sectionalPosts[2].author }} 
+        				</div>
+        				<div class="col-md-6"> 
+        					<img src="static/img/icons/time.png" alt="HTML5 Icon" style="width:20px;height:20px;">
+        					{{ sectionalPosts[2].date }} 
+        				</div>
+        			</div>
+		        </div>
+	        	
+	        	<div class="col-md-6">
+	        		<h2><a href="#">{{ sectionalPosts[3].region }}&raquo;</a></h2>
+		        	<h3> {{ sectionalPosts[3].subject }} </h3>
+		        	<p> {{ sectionalPosts[3].post_content }} </p>
+		        	
+		        	<div class="row">
+        				<div class="col-md-6"> 
+        					<img src="static/img/icons/user.png" alt="HTML5 Icon" style="width:20px;height:20px;">
+        					{{ sectionalPosts[3].author }} 
+        				</div>
+        				<div class="col-md-6"> 
+        					<img src="static/img/icons/time.png" alt="HTML5 Icon" style="width:20px;height:20px;">
+        					{{ sectionalPosts[3].date }} 
+        				</div>
+        			</div>
+		        </div>
+        	</div>
         </div>
         
         <!-- ROW 3 -->
         <div class="row">
-        	<div class="col-md-8">
-        	<p>
-        	Lorem ipsum dolor sit amet, auctor quis vel mauris faucibus sapien, 
-        	felis accumsan vestibulum id lobortis, at erat nec et vitae, nec purus et. 
-        	Est feugiat penatibus praesent sit, praesent arcu cras mauris. Urna ut aliquam 
-        	lorem aliquam justo a, nec tempor donec nulla eleifend mollis, hendrerit a eget 
-        	ipsum scelerisque turpis amet. Felis augue ac nec natoque ullamcorper nulla. At eros
-        	 laoreet viverra, nam in integer ut, eget donec erat ipsum blandit libero vivamus, li
-        	 bero convallis donec elementum habitasse, rhoncus donec scelerisque eget nullam.
-Justo nam curabitur condimentum, enim varius posuere vel, vel nec ullamcorper mauris adipiscing lib
-ero pede, convallis auctor imperdiet, enim proin ut non. Nunc velit massa ac sed quas cubilia. Phasel
-lus sed maecenas fusce per. Pharetra lectus, diam maecenas ligula integer vestibulum tellus, ut ac ac, volu
-tpat rerum imperdiet ultrices accumsan a, vestibulum curae nisl. Lectus magna pede, quam pariatur placerat ut ut
- magna ante, ante placerat hendrerit eu mauris, rutrum eros ullamcorper. Libero imperdiet quisque luctus suspendi
- sse feugiat, porta mus ornare augue ultrices, nec pede, ac ligula magna, urna diam optio dui at dignissim aliquet.
-  Dictum nec mauris sed quisque, amet in vehicula nonummy lacinia, eget iaculis felis adipiscing mauris sollicitud
-  in. In praesent commodo lobortis et ut sem, veritatis vel.
-Dictum at sit aliquam amet ultrices, sodales quis et molestie quisque, sem reprehenderit, interdum nostra 
-quasi morbi non, primis a id elementum. Ante eu ultricies lorem orci sed in, fusce tempor amet turpis, sed dolor lacu
-s praesent libero, hymenaeos velit wisi, ut diam mauris elit. Nullam quis, dolor pellentesque quis viverra vestibu
-lum. Neque tristique est, placerat odio et nulla mauris morbi libero, elit justo lorem omnis nunc porttitor, commod
-o amet at magna diam. Congue donec nunc, interdum consequat nec venenatis quis augue. Dis vulputate feugiat amet male
-suada nunc, feugiat diam placerat integer integer sagittis, ratione interdum sapien neque.
-				</p>
+        	<div class="col-md-7 videosblock">
+        	
+        		<div class="col-md-6 videos">
+        			<div class="embed-responsive embed-responsive-16by9">
+			            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/kdUbPvpQDhE"></iframe>
+			        </div>
+        		</div>
+        		
+        		<div class="col-md-6 videos">
+        			<div class="embed-responsive embed-responsive-16by9">
+			            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/kdUbPvpQDhE"></iframe>
+			        </div>
+        		</div>
+        		
+        		<div class="col-md-6 videos">
+        			<div class="embed-responsive embed-responsive-16by9">
+			            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/kdUbPvpQDhE"></iframe>
+			        </div>
+        		</div>
+        		
+        		<div class="col-md-6 videos">
+        			<div class="embed-responsive embed-responsive-16by9">
+			            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/kdUbPvpQDhE"></iframe>
+			        </div>
+        		</div>
+        		
+        	
         	</div>
-        	<div class="col-md-4">
-        	<p>
-        	Lorem ipsum dolor sit amet, auctor quis vel mauris faucibus sapien, 
-        	felis accumsan vestibulum id lobortis, at erat nec et vitae, nec purus et. 
-        	Est feugiat penatibus praesent sit, praesent arcu cras mauris. Urna ut aliquam 
-        	lorem aliquam justo a, nec tempor donec nulla eleifend mollis, hendrerit a eget 
-        	ipsum scelerisque turpis amet. Felis augue ac nec natoque ullamcorper nulla. At eros
-        	 laoreet viverra, nam in integer ut, eget donec erat ipsum blandit libero vivamus, li
-        	 bero convallis donec elementum habitasse, rhoncus donec scelerisque eget nullam.
-Justo nam curabitur condimentum, enim varius posuere vel, vel nec ullamcorper mauris adipiscing lib
-ero pede, convallis auctor imperdiet, enim proin ut non. Nunc velit massa ac sed quas cubilia. Phasel
-lus sed maecenas fusce per. Pharetra lectus, diam maecenas ligula integer vestibulum tellus, ut ac ac, volu
-tpat rerum imperdiet ultrices accumsan a, vestibulum curae nisl. Lectus magna pede, quam pariatur placerat ut ut
- magna ante, ante placerat hendrerit eu mauris, rutrum eros ullamcorper. Libero imperdiet quisque luctus suspendi
- sse feugiat, porta mus ornare augue ultrices, nec pede, ac ligula magna, urna diam optio dui at dignissim aliquet.
-  Dictum nec mauris sed quisque, amet in vehicula nonummy lacinia, eget iaculis felis adipiscing mauris sollicitud
-  in. In praesent commodo lobortis et ut sem, veritatis vel.
-Dictum at sit aliquam amet ultrices, sodales quis et molestie quisque, sem reprehenderit, interdum nostra 
-quasi morbi non, primis a id elementum. Ante eu ultricies lorem orci sed in, fusce tempor amet turpis, sed dolor lacu
-s praesent libero, hymenaeos velit wisi, ut diam mauris elit. Nullam quis, dolor pellentesque quis viverra vestibu
-lum. Neque tristique est, placerat odio et nulla mauris morbi libero, elit justo lorem omnis nunc porttitor, commod
-o amet at magna diam. Congue donec nunc, interdum consequat nec venenatis quis augue. Dis vulputate feugiat amet male
-suada nunc, feugiat diam placerat integer integer sagittis, ratione interdum sapien neque.
-				</p>
+        	
+        	<div class="col-md-5">
+        		
+        		<div class="videos">
+        			<div class="embed-responsive embed-responsive-16by9">
+			            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/kdUbPvpQDhE"></iframe>
+			        </div>
+        		</div>
         	</div>
             
         </div>

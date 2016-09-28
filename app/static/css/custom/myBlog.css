@@ -1,3 +1,88 @@
+/***** Custom fonts START *****/
+
+@font-face {
+  font-family: Lato;
+  src:url(../../fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+  font-family: ChunkFive;
+  src:url(../../fonts/Chunk.otf);
+}
+
+@font-face {
+  font-family: OpenSans;
+  src:url(../../fonts/OpenSans-Regular.ttf);
+}
+
+/***** Custom fonts END *****/
+
+
+
 body { 
 	padding-top: 70px; 
+	font-family: OpenSans;
 }
+
+.content {
+	margin: 0 4rem;
+}
+
+.rowblock2 h2 {
+	text-align: right;
+	background-color:#68EA42;
+	font-size: 2rem;
+	padding:5px;
+}
+
+.rowblock2 h2 a:hover, .latestNewsTitle a:hover {
+	text-decoration: none;
+	color: red;
+}
+
+.rowblock2 h3 {
+	font-size: 1.8rem;
+	color: red;
+	
+}
+
+.videosblock {
+	padding: 0 0;
+}
+
+.videos {
+	padding: 5px;
+}
+
+.authorbar {
+	padding-top: 0.8rem;
+}
+
+.latestNewsTitle {
+	text-align: center;
+	background-color:#68EA42;
+	font-size: 2rem;
+	padding:5px;
+	margin-top: 0px;
+}
+
+.authorbar {
+	font-size: 12px;
+}
+
+
+
+/* Media Queries */
+/* This is for tabs & phones */
+@media (max-width: 991px) {
+	
+	.latestNewsTitle {
+		margin-top: 40px;
+	}
+}
+
+/* This is for normal desktops & laptops */
+@media (min-width: 992px) {
+	
+}
+
