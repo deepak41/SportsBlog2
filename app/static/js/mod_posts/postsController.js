@@ -14,6 +14,38 @@ app.controller("viewPostCtrl", function($scope, $routeParams, ajaxCallService) {
 })
 
 
+app.controller("latestNewsCtrl", function($scope, $location, ajaxCallService, checkNumberService) {
+	
+	var page = $location.search().page;
+	
+	if(page == undefined) {
+		page = 1;
+	}
+	else if(!checkNumberService.isInt(page)) {
+		$location.path("/404");
+	}
+	
+	page = parseInt(page);
+	
+	ajaxCallService.getData("/api/get_latestposts?page="+page)
+	.success(function(response) {
+		$scope.posts = response;
+		
+		$scope.nextpage = page+1;
+		$scope.previous = page-1;
+	    if ($scope.previous < 1) {
+	    	$scope.previous = 1;
+	    }
+	});
+	
+	ajaxCallService.getData("/api/userhome")
+	.success(function(response){
+		$scope.latestPosts = response["section1"];
+	})
+
+})
+
+
 app.controller("writePostCtrl", function($scope, $location, ajaxCallService) {
 	
 	$scope.createPost = function(formData) {

@@ -70,6 +70,30 @@ body {
 	font-size: 12px;
 }
 
+.newsbox {
+	background-color:#68EA42;
+	padding: 15px 20px;
+	margin-bottom:15px;
+}
+
+.newsbox a {
+	color: black;
+}
+
+.newsbox h2 {
+	margin-top: 0px;
+	font-size:18px;
+}
+
+.newsbox div {
+	font-size:12px; 
+	margin-bottom:10px;
+}
+
+.newsbox p {
+	font-size:14px; 
+}
+
 
 
 /* Media Queries */

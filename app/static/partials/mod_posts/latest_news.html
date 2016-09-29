@@ -1,27 +1,39 @@
-<div>
-	<div class="row">
-		<div class="col-md-8">
-			<h1 style="font-size:40px;margin-top: 0px;"> {{post.subject}} </h1>
+<div class="row">
+	
+	<!-- START -->
+	<div class="col-md-8">
+	
+		<div class="newsbox" ng-repeat="post in posts">
+			<a href="#/post/{{post.pid}}"><h2>{{ post.subject }}</h2></a>
 			
-			<div style="font-size:14px; margin-bottom:10px">
-				<img src="static/img/icons/user.png" alt="HTML5 Icon" style="width:16px;height:16px;margin-right:5px">{{post.author}} 
+			<div>
+				<img src="static/img/icons/user.png" alt="HTML5 Icon" style="width:16px;height:16px;margin-right:5px">
+				{{ post.author }}
 				&boxv; 
-				<img src="static/img/icons/time.png" alt="HTML5 Icon" style="width:16px;height:16px;margin-right:5px">{{post.date}} 
+				<img src="static/img/icons/time.png" alt="HTML5 Icon" style="width:16px;height:16px;margin-right:5px">
+				{{ post.date }}
 				&boxv; 
 				<img src="static/img/icons/comment.png" alt="HTML5 Icon" style="width:16px;height:16px;margin-right:5px">
 				0 comments
 			</div>
-
-			<p style="font-size:17px">{{post.post_content}}</p>
-		
+			
+			<p>{{ post.post_content }}</p>
 		</div>
 		
-		
-		
-		<div class="col-md-4">
-			<!-- Latest News -->
-        	<div>
-        		<h2 class="latestNewsTitle"><a href="#">Latest News&raquo;</a></h2>
+		<nav>
+            <ul class="pager">
+                <li><a href="#/latest_news?page={{previous}}">Previous</a></li>
+                <li><a href="#/latest_news?page={{nextpage}}">Next</a></li>
+            </ul>
+        </nav>
+	
+	</div>
+	
+	<!-- END -->
+	
+	<div class="col-md-4">
+		<div>
+        		<h2 class="latestNewsTitle"><a href="#/latest_news">Latest News&raquo;</a></h2>
 	        	<div class="list-group"> 
 	        		
 	        		<a href="#/post/{{post.pid}}" class="list-group-item" ng-repeat="post in latestPosts"> 
@@ -44,8 +56,6 @@
 	        	</div>
 	        </div>
 		
-		
-		</div>
 	</div>
 
 </div>
