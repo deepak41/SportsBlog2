@@ -38,7 +38,7 @@ app.config(function($routeProvider) {
 			templateUrl : "/static/partials/mod_posts/edit_post.html",
 			controller : "editPostCtrl"
 		})
-		.when("/latest_news", {
+		.when("/latest_news/:area?/:region?", {
 			templateUrl : "/static/partials/mod_posts/latest_news.html",
 			controller : "latestNewsCtrl"
 		})

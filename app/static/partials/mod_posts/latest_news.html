@@ -2,7 +2,11 @@
 	
 	<!-- START -->
 	<div class="col-md-8">
-	
+		
+		<h1 class="newsboxlistheading" ng-if="!region">&#9830; Latest News</h1>
+		<h1 class="newsboxlistheading" ng-if="region">&#9830; {{region}} News</h1>
+		
+		
 		<div class="newsbox" ng-repeat="post in posts">
 			<a href="#/post/{{post.pid}}"><h2>{{ post.subject }}</h2></a>
 			
@@ -22,8 +26,8 @@
 		
 		<nav>
             <ul class="pager">
-                <li><a href="#/latest_news?page={{previous}}">Previous</a></li>
-                <li><a href="#/latest_news?page={{nextpage}}">Next</a></li>
+                <li><a href="{{paginationUrl}}{{previous}}">Previous</a></li>
+                <li><a href="{{paginationUrl}}{{nextpage}}">Next</a></li>
             </ul>
         </nav>
 	

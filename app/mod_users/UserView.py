@@ -38,18 +38,22 @@ class UserHomeView(MethodView):
             
             
         # section 2
-        regions = ["EUROPE", "ASIA", "AFRICA", "SOUTH AMERICA"]
+        regions = ["europe", "asia", "africa", "southamerica"]
         
         for region in regions:
             row = postsModel.getLatestPostsByRegion(0, 1, region)
             
             t = datetime.fromtimestamp(row[0][5])
-            post_content = row[0][3][0:200]
+            post_content = row[0][3][0:200] + "..."
+            subject = row[0][2]
+            
+            if len(subject) > 100:
+                subject = row[0][2][0:100] + "..."
              
             data = {
                 "pid":row[0][0],
                 "uid":row[0][1],
-                "subject":row[0][2],
+                "subject":subject,
                 "post_content":post_content,
                 "region":row[0][4],
                 "date":t.strftime("%d-%b-%Y %H:%M"),

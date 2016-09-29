@@ -44,7 +44,8 @@ class CreatePostView(MethodView):
     
     
 class LatestNewsView(MethodView):
-    def get(self):
+    def get(self, area=None, region=None):
+        
         page = request.args.get("page", 1)
         
         try:
@@ -56,8 +57,14 @@ class LatestNewsView(MethodView):
         
         postsModel = PostsModel()
         output = []
+        records = []
         
-        records = postsModel.getLatestPosts(skipRows, 5)
+
+        if (area in ["all", None]) and region==None:
+            records = postsModel.getLatestPosts(skipRows, 5)
+        
+        elif area == "area" and region != None:
+            records = postsModel.getLatestPostsByRegion(skipRows, 5, region)
         
         for row in records:
             t = datetime.fromtimestamp(row[5])

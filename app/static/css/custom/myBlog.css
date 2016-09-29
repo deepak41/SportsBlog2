@@ -94,6 +94,13 @@ body {
 	font-size:14px; 
 }
 
+.newsboxlistheading {
+	margin-top: 0px;
+	font-size:20px;
+	background-color:#68EA42;
+	padding: 5px 20px;
+}
+
 
 
 /* Media Queries */

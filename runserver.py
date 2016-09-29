@@ -28,6 +28,8 @@ app.add_url_rule('/api/userhome', view_func=userHomeView, methods=['GET'])
 app.add_url_rule('/api/post/<postId>', view_func=postsView, methods=['GET'])
 app.add_url_rule('/api/createpost', view_func=createPostView, methods=['POST'])
 app.add_url_rule('/api/get_latestposts', view_func=latestNewsView, methods=['GET'])
+app.add_url_rule('/api/get_latestposts/<area>', view_func=latestNewsView, methods=['GET'])
+app.add_url_rule('/api/get_latestposts/<area>/<region>', view_func=latestNewsView, methods=['GET'])
 
 
 if __name__ == "__main__":

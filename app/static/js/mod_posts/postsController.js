@@ -14,7 +14,11 @@ app.controller("viewPostCtrl", function($scope, $routeParams, ajaxCallService) {
 })
 
 
-app.controller("latestNewsCtrl", function($scope, $location, ajaxCallService, checkNumberService) {
+app.controller("latestNewsCtrl", function($scope, $location, $routeParams, ajaxCallService, checkNumberService) {
+	
+	var area = $routeParams.area;
+	var region = $routeParams.region;
+	$scope.region = region;
 	
 	var page = $location.search().page;
 	
@@ -27,16 +31,39 @@ app.controller("latestNewsCtrl", function($scope, $location, ajaxCallService, ch
 	
 	page = parseInt(page);
 	
-	ajaxCallService.getData("/api/get_latestposts?page="+page)
+	var url = "";
+	if(area == undefined && region == undefined) {
+		url = "/api/get_latestposts?page=";
+		$scope.paginationUrl = "#/latest_news?page=";  
+	}
+	else if(area != undefined && region == undefined) {
+		url = "/api/get_latestposts/"+ area +"?page=";
+		$scope.paginationUrl = "#/latest_news/"+ area +"?page="; 
+	}
+	else {
+		url = "/api/get_latestposts/"+ area +"/" + region +"?page=";
+		$scope.paginationUrl = "#/latest_news/"+ area +"/" + region +"?page=";
+		
+		$scope.region = region.toUpperCase();
+		if(region == "southamerica"){
+			$scope.region = "SOUTH AMERICA";
+		}
+	}
+	
+	
+	ajaxCallService.getData(url + page)
 	.success(function(response) {
 		$scope.posts = response;
-		
-		$scope.nextpage = page+1;
-		$scope.previous = page-1;
-	    if ($scope.previous < 1) {
-	    	$scope.previous = 1;
-	    }
+		console.log(response);
 	});
+	
+	
+	$scope.nextpage = page+1;
+	$scope.previous = page-1;
+    if ($scope.previous < 1) {
+    	$scope.previous = 1;
+    }
+    
 	
 	ajaxCallService.getData("/api/userhome")
 	.success(function(response){
