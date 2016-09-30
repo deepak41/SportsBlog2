@@ -54,10 +54,11 @@ class PostsModel(object):
     def createPost(self, formData):
         subject = formData.get("subject")
         post_content = formData.get("post_content")
+        region = formData.get("region")
         
         
         stmt_insert = "INSERT INTO posts (uid, subject, post_content, region, date) VALUES (%s, %s, %s, %s, %s)"
-        values = [session["userId"], subject, post_content, "ASIA", int(time.time())]
+        values = [session["userId"], subject, post_content, region, int(time.time())]
 
         self.cursor.execute(stmt_insert, values)
         self.conn.commit()

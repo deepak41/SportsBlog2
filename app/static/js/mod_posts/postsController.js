@@ -83,15 +83,18 @@ app.controller("writePostCtrl", function($scope, $location, ajaxCallService) {
 				if(response == "success") {
 					$location.path("/home");
 				}
-				else {
-					console.log("********* MM");
-					$scope.message= true;
-				}
 			})
 		    .error(function(err){
 		    	
 		    });
 	}
+	
+	$scope.regions = [
+	    { name: 'ASIA', value: 'asia' }, 
+	    { name: 'AFRICA', value: 'africa' }, 
+	    { name: 'EUROPE', value: 'europe' },
+	    { name: 'SOUTH AMERICA', value: 'southamerica' }
+    ];
 })
 
 
