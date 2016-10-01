@@ -24,6 +24,10 @@ body {
 	font-family: OpenSans;
 }
 
+.btn:focus, .btn:active {
+   outline: none !important;
+}
+
 .content {
 	margin: 0 4rem;
 }
@@ -105,7 +109,8 @@ body {
 	font-weight: normal;
 }
 
-/* DROPDOWN */
+
+/* DROPDOWN 
 .writepost select {
 	margin: 5px 20px;
 	//background: transparent;
@@ -123,7 +128,7 @@ body {
 	background-color:#F7F7C7;
 	cursor:pointer;
 	//text-align-last:center;
-} 
+} */
 
 
 /* Media Queries */

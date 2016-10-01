@@ -12,7 +12,7 @@
 	<title>SportsBlog</title>
 	
 	<!-- Bootstrap Links -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>   
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -20,12 +20,17 @@
 	<!-- AngularJS Links -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
 	
-	<!-- Custom styles for this template -->
-	<link href="/static/css/custom/myBlog.css" rel="stylesheet">
+	<!-- Angular Toaster -->
+	<script src="static/js/lib/toaster.js"></script>
+	<link href="/static/css/lib/toaster.css" rel="stylesheet">
 	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/static/img/favicon.ico">
+	
+	<!-- Custom styles for this template -->
+	<link href="/static/css/custom/myBlog.css" rel="stylesheet">
 	
 	<!-- JS Files links -->	
 	<script src="static/js/app.js"></script>
@@ -107,7 +112,18 @@
 	<div class="databody">
 	     <div class="container">
 	     	<div class="content">
+	     		
+	     		<!-- Toaster -->
+	     		<div>
+	     			<toaster-container toaster-options="{
+	     				'time-out': 8000, 
+	         			'position-class': 'toast-top-right',
+	         			'close-button':true}">
+	                </toaster-container>
+		     	</div>
+	     	
 	         	<div ng-view></div>
+	         	
 	        </div>
 	     </div>
     </div>

@@ -54,7 +54,6 @@ app.controller("latestNewsCtrl", function($scope, $location, $routeParams, ajaxC
 	ajaxCallService.getData(url + page)
 	.success(function(response) {
 		$scope.posts = response;
-		console.log(response);
 	});
 	
 	
@@ -73,14 +72,16 @@ app.controller("latestNewsCtrl", function($scope, $location, $routeParams, ajaxC
 })
 
 
-app.controller("writePostCtrl", function($scope, $location, ajaxCallService) {
+app.controller("writePostCtrl", function($scope, $location, ajaxCallService, toasterService) {
+	
+	var message = {"status":"success", "title":"SUCCESS","content":"Post created successfully!"};
 	
 	$scope.createPost = function(formData) {
 		ajaxCallService.postData("/api/createpost", formData)
 			.success(function(response) {
-				console.log(response);
 				
 				if(response == "success") {
+					toasterService.popMessage(message);
 					$location.path("/home");
 				}
 			})

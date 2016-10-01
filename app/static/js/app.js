@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute"]);
+var app = angular.module("myApp", ["ngRoute", "ngAnimate","toaster"]);
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -75,5 +75,12 @@ app.service("checkNumberService", function() {
 			 return false;
 		 }
 	}
+});
+
+app.service("toasterService", function(toaster){
+	
+	this.popMessage = function(message){
+		toaster.pop(message.status, message.title, message.content);
+	};
 });
 
