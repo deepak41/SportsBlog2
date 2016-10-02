@@ -110,6 +110,35 @@ body {
 }
 
 
+/* toaster START */
+.toast-title {
+	font-weight: normal;
+  	font-size:1.4em;
+}
+
+.toast-close-button:hover,
+.toast-close-button:focus {
+	outline: none;
+}
+
+#toast-container > div {
+  	width: 370px;
+	opacity: 0.85;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+	filter: alpha(opacity=85);
+	font-family: OpenSans, verdana, arial;
+}
+
+.toast-success {
+  background-color: #39CF0D;
+}
+
+.toast-error {
+  background-color: #FA3222;
+}
+/* toaster END */
+
+
 /* DROPDOWN 
 .writepost select {
 	margin: 5px 20px;
