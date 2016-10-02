@@ -10,13 +10,14 @@ class PostsView(MethodView):
     
     def get(self, postId):
         postsModel = PostsModel()
-        
         output = []
         
         row = postsModel.getPostById(postId)
         
-        t = datetime.fromtimestamp(row[5])
-            
+        creationDate = row[5]
+        updationDate = row[6]
+        t = datetime.fromtimestamp(updationDate if updationDate else creationDate)
+        
         data = {
             "pid":row[0],
             "uid":row[1],
@@ -24,7 +25,7 @@ class PostsView(MethodView):
             "post_content":row[3],
             "region":row[4],
             "date":t.strftime("%d-%b-%Y %H:%M"),
-            "author": row[6]+" "+row[7]
+            "author": row[7]+" "+row[8]
         }
         
         output.append(data)
@@ -67,12 +68,15 @@ class LatestNewsView(MethodView):
             records = postsModel.getLatestPostsByRegion(skipRows, 5, region)
         
         for row in records:
-            t = datetime.fromtimestamp(row[5])
             post_content = row[3][0:270] + "..."
             subject = row[2]
             
             if len(subject) > 100:
                 subject = row[2][0:120] + "..."
+                
+            creationDate = row[5]
+            updationDate = row[6]
+            t = datetime.fromtimestamp(updationDate if updationDate else creationDate)
             
             data = {
                 "pid": row[0],
@@ -81,7 +85,7 @@ class LatestNewsView(MethodView):
                 "post_content": post_content,
                 "region": row[4],
                 "date": t.strftime("%d-%b-%Y %H:%M"),
-                "author": row[6]+" "+row[7]
+                "author": row[7]+" "+row[8]
             }
             output.append(data)
             
