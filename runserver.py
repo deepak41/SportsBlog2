@@ -1,6 +1,6 @@
 from flask import Flask
 
-from app.mod_auth.auth_view import AuthView
+from app.mod_auth.auth_view import AuthView, LogoutView
 from app.mod_auth.auth_view import LoginView, SignupView
 from app.mod_index.IndexView import IndexView
 from app.mod_posts.PostsView import PostsView, CreatePostView, LatestNewsView, EditPostView
@@ -12,6 +12,7 @@ app.secret_key = "development key"
 
 
 authApi = AuthView.as_view('user_view')
+logoutApi = LogoutView.as_view('logout_view')
 indexApi = IndexView.as_view('index_view')
 loginView = LoginView.as_view("login_view")
 signupView = SignupView.as_view("signup_view")
@@ -23,6 +24,7 @@ latestNewsView = LatestNewsView.as_view("latestNews_View")
 
 
 app.add_url_rule('/', view_func=indexApi, methods=['GET'])
+app.add_url_rule('/logout', view_func=logoutApi, methods=['GET'])
 app.add_url_rule('/api/login', view_func=loginView, methods=['POST'])
 app.add_url_rule('/api/signup', view_func=signupView, methods=['POST'])
 app.add_url_rule('/api/userhome', view_func=userHomeView, methods=['GET'])

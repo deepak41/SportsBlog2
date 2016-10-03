@@ -1,4 +1,8 @@
 app.controller("navbarCtrl", function($scope) {
-	$scope.message = "banyan tree";
-
+	$scope.isLoggedIn = false;
+	
+	if(sessionInfo.userId != null) {
+		$scope.isLoggedIn = true;
+		$scope.firstname = "Hi "+ sessionInfo.firstname +"!";
+	}
 })

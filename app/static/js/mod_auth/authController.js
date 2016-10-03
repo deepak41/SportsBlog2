@@ -1,6 +1,6 @@
-app.controller("loginCtrl", function($scope, $location, ajaxCallService) {
+app.controller("loginCtrl", function($scope, $location, $window, ajaxCallService) {
 	
-	$scope.message= false;
+	var message = {"status":"success", "title":"SUCCESS","content":"Login Successful!"};
 	
 	$scope.validateUser = function(loginData) {
 		ajaxCallService.postData("/api/login", loginData)
@@ -9,10 +9,11 @@ app.controller("loginCtrl", function($scope, $location, ajaxCallService) {
 				
 				if(response == "Login Successful") {
 					$location.path("/home");
+					$window.location.reload();
 				}
 				else {
 					console.log("********* MM");
-					$scope.message= true;
+					
 				}
 			})
 		    .error(function(err){

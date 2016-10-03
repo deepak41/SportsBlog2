@@ -4,6 +4,7 @@ from flask import Flask, render_template
 from flask import request
 from flask.globals import session
 from flask.views import MethodView
+from werkzeug import redirect
 
 from app.bloglib.dbConfig import db_connect
 
@@ -69,4 +70,11 @@ class SignupView(MethodView):
         cnx.commit()
         
         return "Signup Successful"
+        
+
+class LogoutView(MethodView):
+    def get(self):
+        del session["userId"]
+        del session["firstname"]
+        return redirect("/")
         

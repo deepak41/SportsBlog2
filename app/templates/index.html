@@ -38,6 +38,11 @@
 	<script src="static/js/mod_users/usersController.js"></script>
 	<script src="static/js/mod_posts/postsController.js"></script>
 	<script src="static/js/mod_index/navbarController.js"></script>
+	
+	<script type="text/javascript">
+        var sessionInfo = {};
+        sessionInfo = {{ sessioninfo|tojson|safe }};
+    </script>
  
 </head>
  
@@ -83,10 +88,17 @@
 		      </ul>
 		      
 		      <!-- right side items -->
-		      <ul class="nav navbar-nav navbar-right">
+		      <ul ng-if="!isLoggedIn" class="nav navbar-nav navbar-right">
 	     	      <li><a href="#/signup">Signup</a></li>	
 	        	  <li><a href="#/login">Login</a></li>
 	     	  </ul>
+	     	  
+	     	  
+	     	  <ul ng-if="isLoggedIn" class="nav navbar-nav navbar-right">	
+	     	  	  <li><a href="#">{{'{{firstname}}'}}</a></li>
+	        	  <li><a href="/logout">Logout</a></li>
+	     	  </ul>
+	     	  
 		      
 		      <form class="navbar-form navbar-right">
 		        <div class="form-group">
