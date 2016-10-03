@@ -18,9 +18,10 @@ app.controller("latestNewsCtrl", function($scope, $location, $routeParams, ajaxC
 	
 	var area = $routeParams.area;
 	var region = $routeParams.region;
-	$scope.region = region;
-	
 	var page = $location.search().page;
+	
+	$scope.region = region;
+	$scope.loggedUserId = sessionInfo.userId;
 	
 	if(page == undefined) {
 		page = 1;
@@ -50,21 +51,19 @@ app.controller("latestNewsCtrl", function($scope, $location, $routeParams, ajaxC
 		}
 	}
 	
-	
 	ajaxCallService.getData(url + page)
 	.success(function(response) {
 		$scope.posts = response;
 	});
-	
 	
 	$scope.nextpage = page+1;
 	$scope.previous = page-1;
     if ($scope.previous < 1) {
     	$scope.previous = 1;
     }
-    
+		
 	
-	ajaxCallService.getData("/api/userhome")
+    ajaxCallService.getData("/api/userhome")
 	.success(function(response){
 		$scope.latestPosts = response["section1"];
 	})

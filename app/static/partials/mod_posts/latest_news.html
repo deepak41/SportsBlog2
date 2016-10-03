@@ -19,7 +19,14 @@
 				&boxv; 
 				<img src="static/img/icons/comment.png" alt="HTML5 Icon" style="width:16px;height:16px;margin-right:5px">
 				0 comments
+				
+				<div ng-if="post.uid == loggedUserId" class="pull-right">
+					<a href="#/edit_post/{{post.pid}}"><p>Edit this post</p></a>
+				</div>
+				
 			</div>
+				
+
 			
 			<p>{{ post.post_content }}</p>
 		</div>
