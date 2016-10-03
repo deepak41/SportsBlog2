@@ -39,10 +39,8 @@ class PostsModel(object):
     
     
     def getPostById(self, postId):
-        
         stmt_select = "SELECT posts.*, users.firstname, users.lastname FROM users inner join posts on users.uid = posts.uid where pid = %s;"
         values = [postId]
-        
         self.cursor.execute(stmt_select, values)
         
         row = self.cursor.fetchone()
@@ -60,6 +58,23 @@ class PostsModel(object):
         stmt_insert = "INSERT INTO posts (uid, subject, post_content, region, date) VALUES (%s, %s, %s, %s, %s)"
         values = [session["userId"], subject, post_content, region, int(time.time())]
 
+        self.cursor.execute(stmt_insert, values)
+        self.conn.commit()
+        
+        return "success"
+    
+    
+    def editPost(self, postId, formData):
+        subject = formData.get("subject")
+        post_content = formData.get("post_content")
+        region = formData.get("region")
+        last_update_date = int(time.time())
+        
+        
+        stmt_insert = "UPDATE posts SET subject=%s, post_content=%s, region=%s, last_update_date=%s WHERE pid=%s;"
+        values = [subject, post_content, region, last_update_date, postId]
+        
+        # try catch block here
         self.cursor.execute(stmt_insert, values)
         self.conn.commit()
         

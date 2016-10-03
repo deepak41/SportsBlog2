@@ -1,7 +1,9 @@
 from datetime import datetime
 import json
+
 from flask import request
 from flask.views import MethodView
+from werkzeug.exceptions import abort
 
 from app.mod_posts.PostsModel import PostsModel
 
@@ -11,6 +13,11 @@ class PostsView(MethodView):
     def get(self, postId):
         postsModel = PostsModel()
         output = []
+        
+        try:
+            postId = int(postId)
+        except:
+            abort(404)
         
         row = postsModel.getPostById(postId)
         
@@ -40,6 +47,17 @@ class CreatePostView(MethodView):
         postsModel = PostsModel()
         
         result = postsModel.createPost(formData)
+        
+        return result
+    
+    
+class EditPostView(MethodView):
+    def post(self, postId):
+        
+        formData = json.loads(request.data)
+        postsModel = PostsModel()
+        
+        result = postsModel.editPost(postId, formData)
         
         return result
     

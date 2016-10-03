@@ -3,7 +3,7 @@ from flask import Flask
 from app.mod_auth.auth_view import AuthView
 from app.mod_auth.auth_view import LoginView, SignupView
 from app.mod_index.IndexView import IndexView
-from app.mod_posts.PostsView import PostsView, CreatePostView, LatestNewsView
+from app.mod_posts.PostsView import PostsView, CreatePostView, LatestNewsView, EditPostView
 from app.mod_users.UserView import UserHomeView
 
 
@@ -18,6 +18,7 @@ signupView = SignupView.as_view("signup_view")
 userHomeView = UserHomeView.as_view("userHome_view")
 postsView = PostsView.as_view("posts_view")
 createPostView = CreatePostView.as_view("createPost_View")
+editPostView = EditPostView.as_view("editPost_View")
 latestNewsView = LatestNewsView.as_view("latestNews_View")
 
 
@@ -27,6 +28,7 @@ app.add_url_rule('/api/signup', view_func=signupView, methods=['POST'])
 app.add_url_rule('/api/userhome', view_func=userHomeView, methods=['GET'])
 app.add_url_rule('/api/post/<postId>', view_func=postsView, methods=['GET'])
 app.add_url_rule('/api/createpost', view_func=createPostView, methods=['POST'])
+app.add_url_rule('/api/editpost/<postId>', view_func=editPostView, methods=['POST'])
 app.add_url_rule('/api/get_latestposts', view_func=latestNewsView, methods=['GET'])
 app.add_url_rule('/api/get_latestposts/<area>', view_func=latestNewsView, methods=['GET'])
 app.add_url_rule('/api/get_latestposts/<area>/<region>', view_func=latestNewsView, methods=['GET'])

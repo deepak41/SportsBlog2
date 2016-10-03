@@ -34,7 +34,7 @@ app.config(function($routeProvider) {
 			templateUrl : "/static/partials/mod_posts/write_post.html",
 			controller : "writePostCtrl"
 		})
-		.when("/edit_post", {
+		.when("/edit_post/:postid", {
 			templateUrl : "/static/partials/mod_posts/edit_post.html",
 			controller : "editPostCtrl"
 		})

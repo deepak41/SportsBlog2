@@ -99,7 +99,50 @@ app.controller("writePostCtrl", function($scope, $location, ajaxCallService, toa
 })
 
 
-app.controller("editPostCtrl", function($scope) {
+app.controller("editPostCtrl", function($scope, $location, $routeParams, ajaxCallService, toasterService) {
+	var message = {"status":"success", "title":"SUCCESS","content":"Post created successfully!"};
+	var postId = $routeParams.postid;
 	
-	$scope.mess = "sunny day";
+	ajaxCallService.getData("/api/post/"+postId)
+	.success(function(response){
+		$scope.post = response[0];
+		$scope.formData = {
+				"post_content":response[0].post_content, 
+				"subject": response[0].subject,
+				"region": response[0].region
+		};
+		
+	})
+	
+	$scope.regions = [
+	          	    { name: 'ASIA', value: 'asia' }, 
+	          	    { name: 'AFRICA', value: 'africa' }, 
+	          	    { name: 'EUROPE', value: 'europe' },
+	          	    { name: 'SOUTH AMERICA', value: 'southamerica' }
+	              ];
+	
+	$scope.editPost = function(formData) {
+		ajaxCallService.postData("/api/editpost/"+postId, formData)
+			.success(function(response) {
+				
+				if(response == "success") {
+					toasterService.popMessage(message);
+					$location.path("/home");
+				}
+			})
+		    .error(function(err){
+		    	
+		    });}
 })
+
+
+
+
+
+
+
+
+
+
+
+
