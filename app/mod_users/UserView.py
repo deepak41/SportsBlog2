@@ -11,6 +11,8 @@ from app.mod_users.UserModel import UserModel
 class UserHomeView(MethodView):
     
     def get(self):
+        response = {"status":"", "message":"", "data":""}
+        
         postsModel = PostsModel()
         output = {"section1":[], "section2":[]}
         
@@ -67,5 +69,10 @@ class UserHomeView(MethodView):
             }
             output["section2"].append(data)
 
-        return json.dumps(output)
+        response["status"] = "SUCCESS"
+        response["message"] = "Data found successfully!"
+        response["data"] = output
+        
+        return json.dumps(response)
+
         

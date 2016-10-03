@@ -1,19 +1,21 @@
-app.controller("loginCtrl", function($scope, $location, $window, ajaxCallService) {
+app.controller("loginCtrl", function($scope, $location, $window, ajaxCallService, toasterService) {
 	
-	var message = {"status":"success", "title":"SUCCESS","content":"Login Successful!"};
+	var message = {"status":"", "title":"","content":""};
 	
 	$scope.validateUser = function(loginData) {
 		ajaxCallService.postData("/api/login", loginData)
 			.success(function(response) {
-				console.log(response);
 				
-				if(response == "Login Successful") {
+				if(response.status == "SUCCESS") {
 					$location.path("/home");
 					$window.location.reload();
 				}
 				else {
-					console.log("********* MM");
+					message.status="error";
+					message.title=response.status;
+					message.content=response.message;
 					
+					toasterService.popMessage(message);
 				}
 			})
 		    .error(function(err){
@@ -23,18 +25,25 @@ app.controller("loginCtrl", function($scope, $location, $window, ajaxCallService
 });
 
 
-app.controller("signupCtrl", function($scope, $location, ajaxCallService) {
+app.controller("signupCtrl", function($scope, $location, ajaxCallService, toasterService) {
+	
+	var message = {"status":"", "title":"","content":""};
+	
 	$scope.createUser = function(signupData) {
-		
 		ajaxCallService.postData("/api/signup", signupData)
 			.success(function (response) {
-				console.log(response);
 				
-				if(response == "Signup Successful") {
+				if(response.status == "SUCCESS") {
 					$location.path("/home");
+					
+					message.status="success";
+					message.title=response.status;
+					message.content=response.message;
+					
+					toasterService.popMessage(message);
 				}
 				else {
-					console.log("********* MM");
+					
 				}
 			})
 		    .error(function(err){

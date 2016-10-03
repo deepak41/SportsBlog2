@@ -14,6 +14,8 @@ class PostsView(MethodView):
         postsModel = PostsModel()
         output = []
         
+        response = {"status":"", "message":"", "data":""}
+        
         try:
             postId = int(postId)
         except:
@@ -37,33 +39,53 @@ class PostsView(MethodView):
         
         output.append(data)
         
-        return json.dumps(output)
+        response["status"] = "SUCCESS"
+        response["message"] = "Post found successfully!"
+        response["data"] = output
+        
+        return json.dumps(response)
     
     
 class CreatePostView(MethodView):
     def post(self):
         
         formData = json.loads(request.data)
+        
+        response = {"status":"", "message":"", "data":""}
+        
         postsModel = PostsModel()
         
         result = postsModel.createPost(formData)
         
-        return result
+        response["status"] = "SUCCESS"
+        response["message"] = "Post created successfully!"
+        response["data"] = None
+        
+        return json.dumps(response)
     
     
 class EditPostView(MethodView):
     def post(self, postId):
         
         formData = json.loads(request.data)
+        
+        response = {"status":"", "message":"", "data":""}
+        
         postsModel = PostsModel()
         
         result = postsModel.editPost(postId, formData)
         
-        return result
+        response["status"] = "SUCCESS"
+        response["message"] = "Post updated successfully!"
+        response["data"] = None
+        
+        return json.dumps(response)
     
     
 class LatestNewsView(MethodView):
     def get(self, area=None, region=None):
+        
+        response = {"status":"", "message":"", "data":""}
         
         page = request.args.get("page", 1)
         
@@ -107,12 +129,8 @@ class LatestNewsView(MethodView):
             }
             output.append(data)
             
-        return json.dumps(output)
+            response["status"] = "SUCCESS"
+            response["message"] = "Posts found successfully!"
+            response["data"] = output
         
-        
-        
-    
-    
-        
-        
-        
+        return json.dumps(response)

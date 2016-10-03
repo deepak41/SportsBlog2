@@ -24,6 +24,8 @@ class LoginView(MethodView):
         email = loginData.get("email")
         password = loginData.get("password")
         
+        response = {"status":"", "message":"", "data":""}
+        
         cnx = db_connect()
         cur = cnx.cursor()
         
@@ -43,11 +45,20 @@ class LoginView(MethodView):
             if password == data["pwdhash"]:
                 session["userId"] = data["uid"]
                 session["firstname"] = data["firstname"]
-                return "Login Successful"
+                
+                response["status"] = "SUCCESS"
+                response["message"] = "Login Successful!"
+                response["data"] = None
             else:
-                return "Login Unsuccessful"
+                response["status"] = "ERROR"
+                response["message"] = "Either email or password is invalid!"
+                response["data"] = None
         else:
-            return "Login Unsuccessful"
+            response["status"] = "ERROR"
+            response["message"] = "Either email or password is invalid!"
+            response["data"] = None
+        
+        return json.dumps(response)
 
     
 class SignupView(MethodView):
@@ -60,6 +71,8 @@ class SignupView(MethodView):
         email = signupData.get("email")
         password = signupData.get("password")
         
+        response = {"status":"", "message":"", "data":""}
+        
         cnx = db_connect()
         cur = cnx.cursor()
         
@@ -69,7 +82,11 @@ class SignupView(MethodView):
         cur.execute(stmt_insert, values)
         cnx.commit()
         
-        return "Signup Successful"
+        response["status"] = "SUCCESS"
+        response["message"] = "SignUp Successful!"
+        response["data"] = None
+        
+        return json.dumps(response)
         
 
 class LogoutView(MethodView):

@@ -4,12 +4,16 @@ app.controller("viewPostCtrl", function($scope, $routeParams, ajaxCallService) {
 	
 	ajaxCallService.getData("/api/post/"+postId)
 		.success(function(response){
-			$scope.post = response[0];
+			if(response.status == "SUCCESS") {
+				$scope.post = response.data[0];
+			}
 		})
 		
 	ajaxCallService.getData("/api/userhome")
 		.success(function(response){
-			$scope.latestPosts = response["section1"];
+			if(response.status == "SUCCESS") {
+				$scope.latestPosts = response.data["section1"];
+			}
 		})	
 })
 
@@ -53,7 +57,9 @@ app.controller("latestNewsCtrl", function($scope, $location, $routeParams, ajaxC
 	
 	ajaxCallService.getData(url + page)
 	.success(function(response) {
-		$scope.posts = response;
+		if(response.status == "SUCCESS") {
+			$scope.posts = response.data;
+		}
 	});
 	
 	$scope.nextpage = page+1;
@@ -65,7 +71,9 @@ app.controller("latestNewsCtrl", function($scope, $location, $routeParams, ajaxC
 	
     ajaxCallService.getData("/api/userhome")
 	.success(function(response){
-		$scope.latestPosts = response["section1"];
+		if(response.status == "SUCCESS") {
+			$scope.latestPosts = response.data["section1"];
+		}
 	})
 
 })
@@ -73,15 +81,19 @@ app.controller("latestNewsCtrl", function($scope, $location, $routeParams, ajaxC
 
 app.controller("writePostCtrl", function($scope, $location, ajaxCallService, toasterService) {
 	
-	var message = {"status":"success", "title":"SUCCESS","content":"Post created successfully!"};
+	var message = {"status":"", "title":"","content":""};
 	
 	$scope.createPost = function(formData) {
 		ajaxCallService.postData("/api/createpost", formData)
 			.success(function(response) {
 				
-				if(response == "success") {
-					toasterService.popMessage(message);
+				if(response.status == "SUCCESS") {
 					$location.path("/home");
+					message.status="success";
+					message.title=response.status;
+					message.content=response.message;
+					
+					toasterService.popMessage(message);
 				}
 			})
 		    .error(function(err){
@@ -99,18 +111,18 @@ app.controller("writePostCtrl", function($scope, $location, ajaxCallService, toa
 
 
 app.controller("editPostCtrl", function($scope, $location, $routeParams, ajaxCallService, toasterService) {
-	var message = {"status":"success", "title":"SUCCESS","content":"Post created successfully!"};
+	var message = {"status":"", "title":"","content":""};
 	var postId = $routeParams.postid;
 	
 	ajaxCallService.getData("/api/post/"+postId)
 	.success(function(response){
-		$scope.post = response[0];
-		$scope.formData = {
-				"post_content":response[0].post_content, 
-				"subject": response[0].subject,
-				"region": response[0].region
-		};
-		
+		if(response.status == "SUCCESS") {
+			$scope.formData = {
+				"post_content":response.data[0].post_content, 
+				"subject": response.data[0].subject,
+				"region": response.data[0].region
+			};
+		}
 	})
 	
 	$scope.regions = [
@@ -124,9 +136,13 @@ app.controller("editPostCtrl", function($scope, $location, $routeParams, ajaxCal
 		ajaxCallService.postData("/api/editpost/"+postId, formData)
 			.success(function(response) {
 				
-				if(response == "success") {
-					toasterService.popMessage(message);
+				if(response.status == "SUCCESS") {
 					$location.path("/home");
+					message.status="success";
+					message.title=response.status;
+					message.content=response.message;
+					
+					toasterService.popMessage(message);
 				}
 			})
 		    .error(function(err){
