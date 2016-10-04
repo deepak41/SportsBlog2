@@ -21,7 +21,7 @@
 				0 comments
 				
 				<div ng-if="post.uid == loggedUserId" class="pull-right">
-					<a href="#/edit_post/{{post.pid}}"><p>Edit this post</p></a>
+					<a href="#/edit_post/{{post.pid}}"><p style="color: #3B9768">Edit this post</p></a>
 				</div>
 				
 			</div>
@@ -43,28 +43,28 @@
 	<!-- END -->
 	
 	<!-- Latest News -->
-       	<div class="col-md-4 latestnewsblock">
-       		<h2 class="latestNewsTitle"><a href="#/latest_news">Latest News&raquo;</a></h2>
-        	<div class="list-group"> 
-        		
-        		<a href="#/post/{{post.pid}}" class="list-group-item" ng-repeat="post in latestPosts"> 
-        			<h4 class="list-group-item-heading"> {{ post.subject }} </h4> 
-        			<p class="list-group-item-text"> {{ post.post_content }} </p>
-        			
-        			<div class="row authorbar">
-        				<div class="col-md-6">
-        				
-        					<img src="static/img/icons/user.png" alt="HTML5 Icon" style="width:15px;height:15px;">
-        					{{ post.author }}
-        				</div>
-        				<div class="col-md-6">
-        					<img src="static/img/icons/time.png" alt="HTML5 Icon" style="width:15px;height:15px;">
-        					{{ post.date }}
-        				</div>
-        			</div>
-        		</a>
-        		
-        	</div>
-        </div>
+        	<div class="col-md-4 latestnewsblock">
+        		<h2><a href="#/latest_news">Latest News&raquo;</a></h2>
+	        	<div class="list-group"> 
+	        		
+	        		<a href="#/post/{{post.pid}}" class="list-group-item" ng-repeat="post in latestPosts"> 
+	        			<h4 class="list-group-item-heading"> {{ post.subject }} </h4> 
+	        			<p class="list-group-item-text"> {{ post.post_content }} </p>
+	        			
+	        			<div class="row authorbar">
+	        				<div class="col-md-6">
+	        				
+	        					<img src="static/img/icons/user.png" alt="HTML5 Icon" style="width:15px;height:15px;">
+	        					{{ post.author }}
+	        				</div>
+	        				<div class="col-md-6">
+	        					<img src="static/img/icons/time.png" alt="HTML5 Icon" style="width:15px;height:15px;">
+	        					{{ post.date }}
+	        				</div>
+	        			</div>
+	        		</a>
+	        		
+	        	</div>
+	        </div>
 
 </div>

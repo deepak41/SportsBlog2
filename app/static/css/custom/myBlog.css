@@ -22,7 +22,24 @@
 body { 
 	padding-top: 70px; 
 	font-family: OpenSans;
+	color: #22272d;
 }
+
+/* navbar START*/
+
+/* title */
+.navbar-default .navbar-brand {
+    color: #1d686e;
+    font-family: Lato;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #1d686e;
+}
+
+/* navbar END*/
+
+
 
 .btn:focus, .btn:active {
    outline: none !important;
@@ -37,37 +54,9 @@ body {
 	margin-top: 20px;
 }
 
-.rowblock2 h2 {
-	text-align: right;
-	background-color:#68EA42;
-	font-size: 2rem;
-	padding:5px;
-}
-
-.rowblock2 h2 a:hover, .latestNewsTitle a:hover {
-	text-decoration: none;
-	color: red;
-}
-
-.latestnewsblock {
-	font-size:12px;
-	
-}
-
-.latestnewsblock h4{
-	font-size:13px;
-	
-}
-
 .authorbar {
 	padding-top: 0.8rem;
 	font-size: 11px;
-}
-
-.rowblock2 h3 {
-	font-size: 1.8rem;
-	color: red;
-	
 }
 
 .videosblock {
@@ -78,18 +67,72 @@ body {
 	padding: 5px;
 }
 
-.latestNewsTitle {
-	text-align: center;
-	background-color:#68EA42;
+/*************************************************************/
+.latestnewsblock {
+	font-size:12px;
+	
+}
+
+.list-group-item-heading{
+	font-size:13px;
+}
+
+.latestnewsblock h2 {
+	background-color: #1d686e;
 	font-size: 2rem;
+	text-align: center;
 	padding:5px;
 	margin-top: 0px;
 }
 
+.rowblock2 h2 {
+	background-color:#1d686e;
+	font-size: 2rem;
+	text-align: right;
+	padding:5px;
+}
+
+.rowblock2 h3 {
+	font-size: 1.8rem;
+	color: ;
+	
+}
+
+.rowblock2 h2 a:hover, .latestnewsblock h2 a:hover {
+	text-decoration: none;
+	color: ;
+}
+
+.rowblock2 h2 a, .latestnewsblock h2 a {
+	color: #F3EEEC;
+}
+
+.rowblock2 h3 a:hover, .latestnewsblock h3 a:hover {
+	
+}
+
+.rowblock2 h3 a {
+	color: #767b78;
+}
+
+
+
+/*************************************************************/
+
+.newsboxlistheading {
+	margin-top: 0px;
+	font-size:20px;
+	background-color:  #3E474F;
+	color: #F3EEEC;
+	padding: 5px 20px;
+}
+
 .newsbox {
-	background-color:#68EA42;
+	background-color: #F6F8C9;
 	padding: 15px 20px;
-	margin-bottom:15px;
+	margin-bottom: 15px;
+	border-radius: 3px;
+	border: 1px solid #CDCDBC;
 }
 
 .newsbox a {
@@ -99,6 +142,7 @@ body {
 .newsbox h2 {
 	margin-top: 0px;
 	font-size:18px;
+	color: #646866;
 }
 
 .newsbox div {
@@ -110,16 +154,15 @@ body {
 	font-size:14px; 
 }
 
-.newsboxlistheading {
-	margin-top: 0px;
-	font-size:20px;
-	background-color:#68EA42;
-	padding: 5px 20px;
-}
-
 .writepost label {
 	font-weight: normal;
 }
+
+.fullpost h1 {
+	color: #767b78;
+	font-family: chunkfive;
+}
+
 
 
 /* toaster START */
@@ -212,7 +255,7 @@ body {
 /* This is for tabs & phones */
 @media (max-width: 991px) {
 	
-	.latestNewsTitle {
+	.latestnewsblock h2 {
 		margin-top: 40px;
 	}
 	
