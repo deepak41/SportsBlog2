@@ -7,8 +7,8 @@ app.controller("loginCtrl", function($scope, $location, $window, ajaxCallService
 			.success(function(response) {
 				
 				if(response.status == "SUCCESS") {
-					$location.path("/home");
 					$window.location.reload();
+					$location.path("/home");
 				}
 				else {
 					message.status="error";

@@ -163,6 +163,23 @@ body {
 	font-family: chunkfive;
 }
 
+.loginbox {
+	margin-bottom: 50px;
+	background-color: #1d686e;
+	padding: 50px;
+	box-shadow: 5px 5px 15px #888888;
+}
+
+.loginbox h1 {
+	color: #74C8CF;
+	margin-bottom: 30px;
+	margin-top: 0px;
+} 
+
+.loginbox label {
+	color: #F1EFEF;
+	font-weight: normal;
+} 
 
 
 /* toaster START */
