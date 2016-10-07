@@ -128,7 +128,7 @@ body {
 }
 
 .newsbox {
-	background-color: #F6F8C9;
+	background-color: #FAFAE5;
 	padding: 15px 20px;
 	margin-bottom: 15px;
 	border-radius: 3px;
@@ -163,11 +163,23 @@ body {
 	font-family: chunkfive;
 }
 
+.signupbox h1 {
+	color: #F3F3EF;
+	background-color: #1d686e;
+	padding: 10px 0;
+	margin-bottom: 30px;
+	margin-top: 0px;
+} 
+
 .loginbox {
 	margin-bottom: 50px;
 	background-color: #1d686e;
 	padding: 50px;
 	box-shadow: 5px 5px 15px #888888;
+}
+
+.loginbox .has-error .help-block {
+    color: #E1F231;
 }
 
 .loginbox h1 {

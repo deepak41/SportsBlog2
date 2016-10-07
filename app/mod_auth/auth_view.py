@@ -29,7 +29,7 @@ class LoginView(MethodView):
         cnx = db_connect()
         cur = cnx.cursor()
         
-        stmt_select = "select uid, firstname, pwdhash from users where email = %s;"
+        stmt_select = "select uid, firstname, pwdhash from users where BINARY email = %s;"
         values = [email]
         
         cur.execute(stmt_select, values)

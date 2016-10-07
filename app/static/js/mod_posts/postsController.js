@@ -83,6 +83,17 @@ app.controller("writePostCtrl", function($scope, $location, ajaxCallService, toa
 	
 	var message = {"status":"", "title":"","content":""};
 	
+	console.log(sessionInfo);
+	
+	if(sessionInfo.userId == null) {
+		message.status="warning";
+		message.title="WARNING";
+		message.content="You must be logged in before writing posts!";
+		
+		toasterService.popMessage(message);
+		$location.path("/home");
+	}
+	
 	$scope.createPost = function(formData) {
 		ajaxCallService.postData("/api/createpost", formData)
 			.success(function(response) {

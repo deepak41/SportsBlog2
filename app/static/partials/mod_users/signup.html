@@ -1,36 +1,59 @@
 <div ng-controller="signupCtrl">
-
-	<h1>This is signup page</h1>
-	
-	<div class="col-md-6 col-md-offset-2">
-		
-		<form ng-submit="createUser(signupData)">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 signupbox">
 			
-			<div class="form-group">
-				<label for="firstname">First Name</label>
-				<input type="text" class="form-control" id="firstname" ng-model="signupData.firstname"/>
-			</div>
+			<h1 class="text-center"> SignUp Here </h1>
 			
-			<div class="form-group">
-				<label for="lastname">Last Name</label>
-				<input type="text" class="form-control" id="lastname" ng-model="signupData.lastname"/>
-			</div>
+			<form name="userForm" ng-submit="createUser(signupData)" novalidate>
+				
+				<!-- Firstname -->
+				<div class="form-group" ng-class="{'has-error': userForm.firstname.$touched && userForm.firstname.$invalid}">
+					<label for="firstname">First Name</label>
+					<input name="firstname" type="text" class="form-control" id="firstname" ng-model="signupData.firstname" required/>
+					
+					<div class="help-block" ng-messages="userForm.firstname.$error" ng-if="userForm.firstname.$touched">
+					    <p ng-message="required">Your first name is required.</p>
+					</div>
+					
+				</div>
+				
+				<!-- Lastname -->
+				<div class="form-group" ng-class="{'has-error': userForm.lastname.$touched && userForm.lastname.$invalid}">
+					<label for="lastname">Last Name</label>
+					<input name="lastname" type="text" class="form-control" id="lastname" ng-model="signupData.lastname" required/>
+					
+					<div class="help-block" ng-messages="userForm.lastname.$error" ng-if="userForm.lastname.$touched">
+					    <p ng-message="required">Your last name is required.</p>
+					</div>
+				</div>
+				
+				<!-- Email -->
+				<div class="form-group" ng-class="{'has-error': userForm.email.$touched && userForm.email.$invalid}">
+					<label for="email">Email</label>
+					<input name="email" type="email" class="form-control" id="email" ng-model="signupData.email" required/>
+				
+					<div class="help-block" ng-messages="userForm.email.$error" ng-if="userForm.email.$touched">
+					    <p ng-message="required">Your email is required.</p>
+					    <p ng-message="email">This needs to be a valid email</p>
+					</div>
+				</div>
+				
+				<!-- Password -->
+				<div class="form-group" ng-class="{'has-error': userForm.password.$touched && userForm.password.$invalid}">
+					<label for="password">Password</label>
+					<input name="password" type="password" class="form-control" id="password" ng-model="signupData.password" required/>
+				
+					<div class="help-block" ng-messages="userForm.password.$error" ng-if="userForm.password.$touched">
+					    <p ng-message="required">Your password is required.</p>
+					</div>
+				</div>
+				
+				<!-- Submit -->
+				<div class="form-group">
+					<input type="submit" class="btn btn-primary" value="Submit" ng-disabled="userForm.$invalid" />
+				</div>
+			</form>
 			
-			<div class="form-group">
-				<label for="email">Email</label>
-				<input type="email" class="form-control" id="email" ng-model="signupData.email"/>
-			</div>
-			
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input type="password" class="form-control" id="password" ng-model="signupData.password"/>
-			</div>
-			
-			<div class="form-group">
-				<input type="submit" class="btn btn-default" value="submit" />
-			</div>
-		</form>
-		
+		</div>
 	</div>
-
 </div>
