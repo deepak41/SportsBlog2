@@ -1,10 +1,10 @@
 from flask import Flask
 
 from app.mod_auth.auth_view import AuthView, LogoutView
-from app.mod_auth.auth_view import LoginView, SignupView
+from app.mod_auth.auth_view import LoginView
 from app.mod_index.IndexView import IndexView
 from app.mod_posts.PostsView import PostsView, CreatePostView, LatestNewsView, EditPostView
-from app.mod_users.UserView import UserHomeView
+from app.mod_users.UserView import UserHomeView, SignupView
 
 
 app = Flask(__name__, template_folder="app/templates", static_folder="app/static")

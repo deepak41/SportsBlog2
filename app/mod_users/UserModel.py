@@ -8,15 +8,22 @@ from app.bloglib.dbConfig import db_connect
 class UserModel(object):
 
 
-    def __init__(self, params):
+    def __init__(self):
         self.conn = db_connect()
         self.cursor = self.conn.cursor()
+    
+    
+    def createUser(self, signupData):
+        firstname = signupData.get("firstname")
+        lastname = signupData.get("lastname")
+        email = signupData.get("email")
+        password = signupData.get("password")
         
-    def create(self, name, email, password):
-        stmt_insert = "INSERT INTO users (name, email, password) VALUES (%s, %s, %s)"
-        values = []
+        stmt_insert = "INSERT INTO users (firstname, lastname, email, pwdhash) VALUES (%s, %s, %s, %s);"
+        values = [firstname, lastname, email, password]
+        
         self.cursor.execute(stmt_insert, values)
-        self.cursor.commit()
+        self.conn.commit()
         
         return 
     
@@ -34,5 +41,16 @@ class UserModel(object):
         self.cursor.execute(st, values)
         
         
+    
+    def getByEmail(self, email):
+        stmt_select = "select * from users where BINARY email = %s;"
+        values = [email]
         
+        self.cursor.execute(stmt_select, values)
+        row = self.cursor.fetchone()
+        
+        return row
+    
+    
+    
     

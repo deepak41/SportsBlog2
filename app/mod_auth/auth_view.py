@@ -7,6 +7,7 @@ from flask.views import MethodView
 from werkzeug import redirect
 
 from app.bloglib.dbConfig import db_connect
+from app.mod_users.UserModel import UserModel
 
 
 class AuthView(MethodView):
@@ -20,26 +21,19 @@ class AuthView(MethodView):
 class LoginView(MethodView):
     def post(self):
         loginData = json.loads(request.data)
-        
         email = loginData.get("email")
         password = loginData.get("password")
         
         response = {"status":"", "message":"", "data":""}
         
-        cnx = db_connect()
-        cur = cnx.cursor()
-        
-        stmt_select = "select uid, firstname, pwdhash from users where BINARY email = %s;"
-        values = [email]
-        
-        cur.execute(stmt_select, values)
-        row = cur.fetchone()
+        userModel = UserModel()
+        row = userModel.getByEmail(email)
         
         if row:
             data = {
                 "uid":row[0],
                 "firstname":row[1],
-                "pwdhash":row[2],
+                "pwdhash":row[4],
             }
             
             if password == data["pwdhash"]:
@@ -57,34 +51,6 @@ class LoginView(MethodView):
             response["status"] = "ERROR"
             response["message"] = "Either email or password is invalid!"
             response["data"] = None
-        
-        return json.dumps(response)
-
-    
-class SignupView(MethodView):
-    def post(self):
-        print "****** Rainy Day **********"
-        signupData = json.loads(request.data)
-        
-        firstname = signupData.get("firstname")
-        lastname = signupData.get("lastname")
-        email = signupData.get("email")
-        password = signupData.get("password")
-        
-        response = {"status":"", "message":"", "data":""}
-        
-        cnx = db_connect()
-        cur = cnx.cursor()
-        
-        stmt_insert = "INSERT INTO users (firstname, lastname, email, pwdhash) VALUES (%s, %s, %s, %s);"
-        values = [firstname, lastname, email, password]
-        
-        cur.execute(stmt_insert, values)
-        cnx.commit()
-        
-        response["status"] = "SUCCESS"
-        response["message"] = "SignUp Successful!"
-        response["data"] = None
         
         return json.dumps(response)
         

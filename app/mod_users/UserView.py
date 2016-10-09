@@ -8,6 +8,23 @@ from app.mod_posts.PostsModel import PostsModel
 from app.mod_users.UserModel import UserModel
 
 
+
+class SignupView(MethodView):
+    def post(self):
+        signupData = json.loads(request.data)
+        
+        response = {"status":"", "message":"", "data":""}
+        
+        userModel = UserModel()
+        userModel.createUser(signupData)
+        
+        response["status"] = "SUCCESS"
+        response["message"] = "SignUp Successful!"
+        response["data"] = None
+        
+        return json.dumps(response)
+
+
 class UserHomeView(MethodView):
     
     def get(self):
